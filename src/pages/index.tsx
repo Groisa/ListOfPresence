@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google'
 
 import styles from '@/styles/Home.module.css'
 import ParallaxComponent from '@/components/ParallaxComponent'
+import ContainerForm from '@/components/ContainerForm'
 const inter = Inter({ subsets: ['latin'] })
 
 
@@ -19,7 +20,7 @@ export default function Home() {
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
         <ParallaxComponent />
-
+        <ContainerForm />
       </main>
     </>
   )

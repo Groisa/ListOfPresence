@@ -3,7 +3,6 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  overflow: hidden;
 }
 
 .containerParallax {
@@ -16,103 +15,81 @@
 }
 
 .parallax {
-
+  width: 100%;
+  animation: parallax linear alternate infinite;
   left: 0;
   position: absolute;
 
 }
 
-
 .parallax1 {
-  top: 0;
+  z-index: 10;
+  background-image: url('../assets/images/parallaxImages/forest.png');
+  background-repeat: no-repeat;
   height: 100vh;
-  z-index: 1;
-  animation: parallax 1s linear;
+  bottom: -30%;
+  animation: none;
 
 }
 
 .parallax2 {
   z-index: 9;
-  bottom: 0;
-  bottom: -80px;
-  animation: parallaxBottom 1s linear;
+  height: 100vh;
+  animation-duration: 3s;
+  background-image: url('../assets/images/parallaxImages/media.png');
+  background-repeat: no-repeat;
+  bottom: -32%;
 }
 
 .parallax3 {
+
+  background-image: url('../assets/images/parallaxImages/meio.png');
+  background-repeat: no-repeat;
+  height: 100vh;
   z-index: 7;
-  bottom: -120px;
-  animation: parallaxBottom 1s linear;
+  bottom: -12%;
+  animation-duration: 4s;
 }
 
 .parallax4 {
-  z-index: 10;
-  bottom: 0;
-  animation: parallaxBottom .33s linear;
+  z-index: 6;
+  height: 100vh;
+  bottom: -10%;
+  background-image: url('../assets/images/parallaxImages/treemedia.png');
+  background-repeat: no-repeat;
+  animation-duration: 6s;
 }
 
 .parallax5 {
-  z-index: 8;
-  bottom: 10px;
+  z-index: 5;
+  background-image: url('../assets/images/parallaxImages/sun.png');
+  background-repeat: no-repeat;
+  height: 100vh;
+  left: -300px;
+  animation-duration: 7s;
 }
 
-.parallax6 {
-  z-index: 9;
 
-}
-
-
-@keyframes parallaxBottom {
-  0% {
-    transform: translateY(200%);
+@media(max-width : 767px) {
+  
+  
+  .parallax5 {
+    left: 0;
   }
 
-  100% {
-    transform: translateY(0%);
+  .parallax1 {
+    animation: parallax;
+    background-position: center;
+    animation-duration: 10s;
   }
 }
 
 @keyframes parallax {
   0% {
-    transform: translateY(-100%);
+    background-position: 0 0;
   }
 
   100% {
-    transform: translateY(0%);
-  }
-}
-
-@media(max-width:767px) {
-  .parallax {
-    width: 100vw;
-    height: 100vw;
-    object-fit: cover;
-    animation: parallax2 alternate infinite ;
-  }
-
-  .parallax1 {
-    animation-duration: 2s;
-    
-  }
-
-  .parallax2 {
-    animation-duration: 9s;
-   
-  }
-
-  .parallax3 {
-    animation-duration: 3s;
-    
-  }
-
- 
-}
-
-@keyframes parallax2 {
-  0% {
-    object-position: 0 0;
-  }
-
-  100% {
-    object-position: 100% 0;
+    background-position: 100% 0;
   }
 }

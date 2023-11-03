@@ -1,0 +1,19 @@
+.container {
+
+    position: fixed;
+    z-index: 11;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.glassContainer {
+    background-color: rgba(255, 255, 255, 0.4);
+    width: 70%;
+    height: 80%;
+    border-radius: 30px;
+    filter: blur(10px);
+    box-shadow: 10px 10px 10px 10px rgba(000, 000, 000, 0.1);
+}
