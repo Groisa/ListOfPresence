@@ -82,6 +82,16 @@
     font-size: 1rem;
 }
 
+.glassContainer button {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+    background-color: green;
+    font-size: 1rem;
+}
+
 
 
 .containerTable button:hover {
@@ -201,6 +211,10 @@
     .glassContainer h1 {
         font-size: 2rem;
 
+    }
+
+    .containerTable {
+        align-items: flex-start;
     }
 
     .glassContainer h3 {

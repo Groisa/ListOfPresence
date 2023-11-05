@@ -68,9 +68,18 @@ const ContainerTable: React.FC = () => {
                         <>
                             <h1 >Lista de convidados</h1>
                             {
+                                width < 765 && (
+                                    <button onClick={handleClick}>Enviar lista para WhatsApp</button>
+                                )
+                            }
+                            {
                                 tableData && (
                                     <div className={style.containerTable}>
-                                        <button onClick={handleClick}>Enviar lista para WhatsApp</button>
+                                        {
+                                            width > 765 && (
+                                                <button onClick={handleClick}>Enviar lista para WhatsApp</button>
+                                            )
+                                        }
                                         <table className={style.table}>
                                             <thead>
                                                 <tr>
