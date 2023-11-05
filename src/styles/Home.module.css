@@ -71,8 +71,8 @@
 
 
 @media(max-width : 767px) {
-  
-  
+
+
   .parallax5 {
     left: 0;
   }
@@ -91,5 +91,33 @@
 
   100% {
     background-position: 100% 0;
+  }
+}
+
+@media(min-width: 1280px) {
+ 
+  .parallax1 {
+    bottom: -38%;
+    width: 100vw;
+  }
+
+  .parallax2 {
+    width: 100vw;
+    bottom: -42%;
+  }
+
+  .parallax3 {
+    width: 100vw;
+    bottom: -20%;
+  }
+
+  .parallax4 {
+    width: 100vw;
+    bottom: -9%;
+  }
+
+  .parallax5 {
+    width: 100vw;
+    bottom: -0%;
   }
 }

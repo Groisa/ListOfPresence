@@ -7,6 +7,26 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+}
+
+.glassContainer h1 {
+    font-size: 3rem;
+    color: #000;
+    text-align: center;
+    background: #121FCF;
+    background: linear-gradient(to right, #121FCF 0%, #CF1512 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.glassContainer h3 {
+    font-size: 2rem;
+    text-align: center;
+    background: #61cf12;
+    background: linear-gradient(to right, rgb(153, 207, 18) 0%, #124ecf 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .glassContainer {
@@ -14,6 +34,117 @@
     width: 70%;
     height: 80%;
     border-radius: 30px;
-    filter: blur(10px);
+    backdrop-filter: blur(10px);
+    padding: 20px;
     box-shadow: 10px 10px 10px 10px rgba(000, 000, 000, 0.1);
+}
+
+.containerTable {
+    color: #000;
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+
+}
+
+.table {
+    user-select: none;
+    width: 80%;
+    padding: 0;
+}
+
+.containerTable thead {
+    background: linear-gradient(to right, rgb(153, 207, 18) 0%, #124ecf 100%);
+    text-shadow: 1px 1px 1px #000000;
+    color: #fff;
+    user-select: none;
+}
+
+.containerTable thead tr th {
+    padding: 1px;
+    user-select: none;
+}
+
+.qty {
+    width: 20%;
+}
+
+.qty.border {
+    border-top-right-radius: 10px;
+}
+
+.bordername {
+    border-top-left-radius: 10px;
+}
+
+.containerSelect {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.select {
+    background-color: transparent;
+    color: #000;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 1rem;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: scroll;
+
+
+}
+
+.containerSelected {
+    width: 50%;
+    padding: 5px;
+    color: #000;
+    padding-inline: 10px;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 10px;
+}
+
+.select option {
+    cursor: pointer;
+    user-select: none;
+
+}
+
+.containerMainOption {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+
+}
+
+.containerMainOption option {
+    user-select: none;
+}
+
+.select option:hover {
+
+    background: linear-gradient(to right, rgba(153, 207, 18, 0.209) 0%, #124ecf52 100%);
+}
+
+@media(max-width:767px) {
+    .glassContainer h1 {
+        font-size: 2rem;
+
+    }
+
+    .glassContainer h3 {
+        font-size: 1.2rem;
+
+    }
+
+    .glassContainer {
+        width: 90%;
+    }
+
+    .table {
+        width: 95%;
+    }
 }
