@@ -7,7 +7,7 @@ import React from 'react';
 const ListOfConfirmationAndDenied: React.FC = () => {
     return (
         <>
-            {/* <ParallaxComponent /> */}
+            <ParallaxComponent />
             <ContainerTable/>
         </>
     );
