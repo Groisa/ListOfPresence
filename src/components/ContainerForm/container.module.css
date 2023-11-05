@@ -193,12 +193,14 @@
 
     .glassContainer {
         width: 90%;
+
     }
 
     .table {
         width: 95%;
     }
-    .selected{
-        width: 80%;
+
+    .selected {
+        width: 100%;
     }
 }
