@@ -16,7 +16,7 @@
 
 .parallax {
   width: 100%;
-
+  animation: parallax linear alternate infinite;
   left: 0;
   position: absolute;
 
@@ -71,16 +71,20 @@
 
 
 @media(max-width : 767px) {
-.parallax1 {
-  background-position: center;
-}
+  .parallax1 {
+    background-position: center;
+  }
+
+  .parallax {
+    animation: none;
+  }
 
   .parallax5 {
     left: 0;
     background-position: center;
   }
 
- 
+
 }
 
 @keyframes parallax {
@@ -93,13 +97,7 @@
   }
 }
 
-@media(min-width: 767px) {
-  .parallax {
-    animation: parallax linear alternate infinite;
-    background-position: center;
-   
-  }
-}
+
 
 @media(min-width: 1280px) {
 
