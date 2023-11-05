@@ -16,6 +16,7 @@ interface SelectObject {
 }
 interface InputSelect {
     options: SelectObject[]
+    onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
 interface DataObject {
@@ -26,44 +27,30 @@ interface DataObject {
     value: number | string
 }
 
-const InputSelect: React.FC<InputSelect> = ({ options }) => {
-
-    const [value, setValue] = useState<number>(-1)
-
-    const [expand, setExpand] = useState<boolean>(false)
-
+const InputSelect: React.FC<InputSelect> = ({ options, onChange }) => {
     return (
-        <div className={`${style.containerSelected} ${inter.className}`} >
-            <div className={style.containerMainOption} onClick={() => setExpand(e => !e)}>
-                <option> Selecione seu nome</option>
-                <option > ▼</option>
-            </div>
+        <select className={style.selected} onChange={(e) => onChange(e)}>
+            <option value={-1}> Selecione seu nome</option>=
             {
-                expand && (
-                    <div className={style.select}>
-
+                options && options.length > 0 && (
+                    <>
                         {
-                            options && options.length > 0 && (
-                                <>
-                                    {
-                                        options.map(item => (
-                                            <option onClick={(e) => console.log(item.value)} value={item.value}>{item.label}</option>
-                                        ))
-                                    }
-                                </>
-                            )
+                            options.map(item => (
+                                <option onClick={(e) => console.log(item.value)} value={item.value}>{item.label}</option>
+                            ))
                         }
-
-                    </div>
+                    </>
                 )
             }
-        </div >
+        </select>
 
     )
 }
 const ContainerForm: React.FC = () => {
     const [data, setData] = useState<DataObject[]>()
     const [options, setOptions] = useState<SelectObject[]>();
+    const [tableData, setTableData] = useState<DataObject | null>();
+    const [value, setValue] = useState<number | string>()
     // const dbCreate = () =>  {
     //     setTimeout(() => {
     //         list.map((item, index) => {
@@ -99,7 +86,20 @@ const ContainerForm: React.FC = () => {
 
     }, [])
 
-
+    useEffect(() => {
+        const dataTable = data?.filter(e => {
+            if (`${e.value}` === `${value}`) {
+                return e;
+            } else {
+                return null;
+            }
+        })
+        if (dataTable && dataTable?.length > 0) {
+            setTableData(dataTable[0])
+        } else {
+            setTableData(null)
+        }
+    }, [value])
     useEffect(() => {
         if (data && data?.length > 0) {
             const optionsSelect = [] as SelectObject[]
@@ -122,28 +122,40 @@ const ContainerForm: React.FC = () => {
                 <div className={style.containerSelect}>
                     {
                         options && (
-                            <InputSelect options={options} />
+                            <InputSelect options={options} onChange={(e) => {
+                                setValue(e.target.value)
+                            }} />
                         )
                     }
                 </div>
-                <div className={style.containerTable}>
-                    <table className={style.table}>
-                        <thead>
-                            <tr>
-                                <th className={style.bordername}>Nome</th>
-                                <th className={style.qty}>Quantidade de Adultos</th>
-                                <th className={`${style.qty} ${style.border}`}>Quantidade de Crianças</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                {
+                    tableData && (
+                        <div className={style.containerTable}>
+                            <table className={style.table}>
+                                <thead>
+                                    <tr>
+                                        <th className={style.bordername}>Nome</th>
+                                        <th className={style.qty}>Quantidade de Adultos</th>
+                                        <th className={`${style.qty} ${style.border}`}>Quantidade de Crianças</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr className={inter.className}>
+                                        <th style={{ padding: 5 }} >{tableData?.name}</th>
+                                        <th style={{ padding: 5 }} >{tableData?.adult}</th>
+                                        <th style={{ padding: 5 }} >{tableData?.children}</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div>
+                                <button>Confirma Presença</button>
+                                <button>Negar Presença</button>
+                            </div>
+                        </div>
+                    )
+                }
             </div>
-        </div>
+        </div >
     );
 }
 
