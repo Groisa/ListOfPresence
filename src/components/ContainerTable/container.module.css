@@ -46,13 +46,30 @@
 
 .containerTable {
     color: #000;
-    flex-direction: column;
-    align-items: center;
     display: flex;
     margin-top: 20px;
-    justify-content: center;
-    width: 100%;
 
+    align-items: center;
+    width: 100%;
+    height: 80%;
+    flex-direction: column;
+    overflow-y: scroll;
+
+}
+
+.containerTable::-webkit-scrollbar {
+    width: 3px;
+
+}
+
+.containerTable::-webkit-scrollbar-track {
+    background: transparent;
+
+}
+
+.containerTable::-webkit-scrollbar-thumb {
+    background-color: #000;
+    border-radius: 20px;
 }
 
 .containerTable button {
@@ -60,13 +77,12 @@
     border-radius: 10px;
     border: none;
     cursor: pointer;
-    background-color: red;
+    margin: 10px;
+    background-color: green;
     font-size: 1rem;
 }
 
-.containerTable button:first-child {
-    background-color: green;
-}
+
 
 .containerTable button:hover {
     scale: 1.1;
@@ -81,10 +97,9 @@
 
 .table {
     user-select: none;
-    width: 80%;
+    width: 90%;
     padding: 0;
-  
-    background-color: red;
+
 }
 
 .containerTable thead {
@@ -95,7 +110,7 @@
 }
 
 .containerTable thead tr th {
-    padding: 1px;
+    padding: 5px;
     user-select: none;
 }
 

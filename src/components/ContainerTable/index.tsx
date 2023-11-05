@@ -9,13 +9,14 @@ import style from './container.module.css'
 import { DataObject, Loading } from '../ContainerForm';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '@/config';
+import { useRouter } from 'next/router';
 const inter = Inter({ subsets: ['latin'] })
 // import { Container } from './styles';
 
 const ContainerTable: React.FC = () => {
     const [tableData, setTableData] = useState<DataObject[]>()
 
-
+    const route = useRouter()
     const prepare = async () => {
 
         setLoading(true)
@@ -33,6 +34,29 @@ const ContainerTable: React.FC = () => {
     useEffect(() => {
         prepare()
     }, [])
+    const [width, setWidth] = useState<number>(0)
+    const [heigth, setHeigth] = useState<number>(0)
+
+    useEffect(() => {
+        if (typeof document !== 'undefined') {
+            setWidth(document.documentElement.clientWidth)
+            setHeigth(document.documentElement.clientHeight)
+
+        }
+    }, [])
+    const subdomain = width > 768 ? 'web' : 'api'
+    const handleClick = () => {
+        const phone = "5531986296262"
+        const text = `
+        *Lista de Convidados*
+        \n-------------------------------------${tableData?.map(item => ` 
+        *Nome:* ${item.name}
+        *Presença:* ${item.denied ? "Presença Negada" : item.isConfirmed ? "Presença Confirmada" : !item.denied && !item.isConfirmed && "Ainda não confirmou"}
+        -------------------------------------`
+        )}
+        `
+        route.push(`https://${subdomain}.whatsapp.com/send?phone=${phone}&text=${encodeURI(text)}`)
+    }
     const [loading, setLoading] = useState<boolean>(false);
     return (
         <div className={`${style.container} ${agbalumoFont.className}`}>
@@ -46,6 +70,7 @@ const ContainerTable: React.FC = () => {
                             {
                                 tableData && (
                                     <div className={style.containerTable}>
+                                        <button onClick={handleClick}>Enviar lista para WhatsApp</button>
                                         <table className={style.table}>
                                             <thead>
                                                 <tr>
@@ -55,7 +80,7 @@ const ContainerTable: React.FC = () => {
                                                     <th className={`${style.qty} ${style.border}`}>Sem confirmação</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody >
                                                 {
                                                     tableData.map(item => (
                                                         <>
